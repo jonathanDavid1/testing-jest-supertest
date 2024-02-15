@@ -18,7 +18,7 @@ const student = {
   program: "Ing. de software"
 }
 
-let studentId
+let studentId//Declaracion
 
 
 test("POST -> '/students' should return statusCode 201, res.body to be defined and res.body.firstName = student.firsstName", async () => {
@@ -26,8 +26,8 @@ test("POST -> '/students' should return statusCode 201, res.body to be defined a
     .post(BASE_URL)
     .send(student)
 
-  studentId = res.body.id
-
+  studentId = res.body.id//Asignacion
+  
   expect(res.status).toBe(201)
   expect(res.body).toBeDefined()
   expect(res.body.firstName).toBe(student.firstName)
@@ -36,7 +36,7 @@ test("POST -> '/students' should return statusCode 201, res.body to be defined a
 test("GET -> '/students' should return status code 200 , res.body to be defined and res.body.length = 1", async () => {
   const res = await request(app)
     .get(BASE_URL)
-
+  
   expect(res.statusCode).toBe(200)
   expect(res.body).toBeDefined()
   expect(res.body).toHaveLength(1)
@@ -52,7 +52,7 @@ test("GET -> '/students/:id', should return statusCode 200, res.body to be defin
   expect(res.body.firstName).toBe(student.firstName)
 })
 
-test("PUT -> '/students/:id', should return statusCodew 200, res.body to be defined and res.body.firstName to be David", async () => {
+test("PUT -> '/students/:id', should return statusCode 200, res.body to be defined and res.body.firstName to be David", async () => {
   const res = await request(app)
     .put(`${BASE_URL}/${studentId}`)
     .send({ firstName: "David" })
